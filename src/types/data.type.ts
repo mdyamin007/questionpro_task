@@ -19,3 +19,8 @@ export type User = {
   username: string;
   email: string;
 };
+
+export type StaticUser = {
+  username: string;
+  email: string;
+};

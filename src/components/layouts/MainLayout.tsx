@@ -20,7 +20,7 @@ function MainLayout() {
       <div className="relative">
         <Outlet />
 
-        <UserInfo username="John Doe" email="test@gmail.com" />
+        <UserInfo />
       </div>
     </div>
   );
