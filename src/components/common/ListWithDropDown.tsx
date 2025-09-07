@@ -1,10 +1,15 @@
 import MyCard from "../ui/MyCard";
 
-type PropsType = {
+type PropsType<
+  T extends { id: number; body: string; title?: string; name?: string }
+> = {
   title: string;
+  data: T[];
 };
 
-function ListWithDropDown({ title }: PropsType) {
+function ListWithDropDown<
+  T extends { id: number; body: string; title?: string; name?: string }
+>({ title, data }: PropsType<T>) {
   return (
     <div className="mt-4 relative">
       <h4 className="text-xl font-semibold">{title}</h4>
@@ -20,22 +25,13 @@ function ListWithDropDown({ title }: PropsType) {
 
       {/* list of cards */}
       <div className="flex flex-col gap-4 mt-8">
-        <MyCard
-          title="Card Title"
-          description="This is a description of the card."
-        />
-        <MyCard
-          title="Card Title"
-          description="This is a description of the card."
-        />
-        <MyCard
-          title="Card Title"
-          description="This is a description of the card."
-        />
-        <MyCard
-          title="Card Title"
-          description="This is a description of the card."
-        />
+        {data?.map((item) => (
+          <MyCard
+            key={item.id}
+            title={item.title || item.name || ""}
+            description={item.body}
+          />
+        ))}
       </div>
     </div>
   );
