@@ -5,9 +5,9 @@ import Divider from "../ui/Divider";
 import UserInfo from "../common/UserInfo";
 
 const outerTabs: TabLink[] = [
-  { label: "Home", to: "/" },
-  { label: "Dashboard", to: "/dashboard/posts" }, // lands on default inner tab
-  { label: "MyComponent", to: "/my-component" },
+  { label: "Home", to: "/", end: true },
+  { label: "Dashboard", to: "/dashboard" }, // lands on default inner tab
+  { label: "MyComponent", to: "/my-component", end: true },
 ];
 
 function MainLayout() {

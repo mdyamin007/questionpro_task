@@ -3,6 +3,7 @@ import { NavLink } from "react-router";
 export type TabLink = {
   label: string;
   to: string;
+  end?: boolean;
 };
 
 type PropsType = {
@@ -26,7 +27,7 @@ export default function MyTabs({
         <NavLink
           key={t.to}
           to={t.to}
-          end
+          end={t.end}
           role="tab"
           className={({ isActive }) =>
             [
