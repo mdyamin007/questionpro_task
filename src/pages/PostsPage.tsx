@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import fetchPosts from "../api/fetchPosts";
 import { useMemo, useState } from "react";
 import type { Post } from "../types/data.type";
-import { fetchUsers } from "../api/fetchUsers";
 import { MySelect, type Option } from "../components/ui/MySelect";
 import { queryClient } from "../main";
 import ListWithFilter from "../components/common/ListWithFilter";
+import fetchUsers from "../api/fetchUsers";
 
 function PostsPage() {
   const [userId, setUserId] = useState<number | null>();

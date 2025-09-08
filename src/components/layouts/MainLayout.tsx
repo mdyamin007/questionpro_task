@@ -1,19 +1,13 @@
 import { Outlet } from "react-router";
-import type { TabLink } from "../ui/MyTabs";
 import MyTabs from "../ui/MyTabs";
 import Divider from "../ui/Divider";
 import UserInfo from "../common/UserInfo";
-
-const outerTabs: TabLink[] = [
-  { label: "Home", to: "/", end: true },
-  { label: "Dashboard", to: "/dashboard" }, // lands on default inner tab
-  { label: "My Component", to: "/component", end: true },
-];
+import { OUTER_TABS } from "../../constants/tabs.constants";
 
 function MainLayout() {
   return (
     <div className="container mx-auto p-2">
-      <MyTabs items={outerTabs} />
+      <MyTabs items={OUTER_TABS} />
 
       <Divider className="my-2" />
 

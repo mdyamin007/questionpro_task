@@ -1,9 +1,7 @@
 import Loading from "../ui/Loading";
 import MyCard from "../ui/MyCard";
 
-type PropsType<
-  T extends { id: number; body: string; title?: string; name?: string }
-> = {
+type PropsType<T> = {
   title: string;
   data: T[];
   loading: boolean;

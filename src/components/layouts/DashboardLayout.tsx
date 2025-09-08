@@ -1,16 +1,11 @@
 import { Outlet } from "react-router";
-import type { TabLink } from "../ui/MyTabs";
 import MyTabs from "../ui/MyTabs";
+import { INNER_TABS } from "../../constants/tabs.constants";
 
 export default function DashboardLayout() {
-  const innerTabs: TabLink[] = [
-    { label: "Posts", to: "/dashboard/posts" },
-    { label: "Comments", to: "/dashboard/comments" },
-  ];
-
   return (
     <div>
-      <MyTabs items={innerTabs} />
+      <MyTabs items={INNER_TABS} />
       <div className="mt-3">
         <Outlet />
       </div>
