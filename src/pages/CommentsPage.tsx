@@ -10,7 +10,7 @@ import ListWithFilter from "../components/common/ListWithFilter";
 function CommentsPage() {
   const [postId, setPostId] = useState<number | null>();
 
-  const { data: comments } = useQuery({
+  const { data: comments, isPending } = useQuery({
     queryKey: ["comments", postId],
     queryFn: () => fetchComments(postId),
   });
@@ -47,6 +47,7 @@ function CommentsPage() {
       <ListWithFilter<Comment>
         title="Comments"
         data={comments || []}
+        loading={isPending}
         selectDropdown={
           <MySelect
             options={postOptions}

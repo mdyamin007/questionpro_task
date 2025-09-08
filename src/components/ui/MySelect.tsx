@@ -256,11 +256,11 @@ export function MySelect({
                   onMouseDown={(e) => e.preventDefault()} // keep focus on input
                   onClick={() => commit(opt)}
                   className={[
-                    "flex items-center gap-2 rounded-md px-3 py-2 text-sm select-none",
+                    "flex items-center gap-2 px-3 py-2 text-sm select-none",
                     opt.disabled
                       ? "text-gray-400 cursor-not-allowed"
                       : "cursor-pointer",
-                    isActive ? "bg-gray-100" : "",
+                    isActive ? "bg-blue-50" : "",
                     isSelected ? "font-medium" : "font-normal",
                   ].join(" ")}
                 >

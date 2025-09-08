@@ -10,7 +10,7 @@ import ListWithFilter from "../components/common/ListWithFilter";
 function PostsPage() {
   const [userId, setUserId] = useState<number | null>();
 
-  const { data: posts } = useQuery({
+  const { data: posts, isPending } = useQuery({
     queryKey: ["posts", userId],
     queryFn: () => fetchPosts(userId),
   });
@@ -47,6 +47,7 @@ function PostsPage() {
       <ListWithFilter<Post>
         title="Posts"
         data={posts || []}
+        loading={isPending}
         selectDropdown={
           <MySelect
             options={userOptions}

@@ -1,3 +1,4 @@
+import Loading from "../ui/Loading";
 import MyCard from "../ui/MyCard";
 
 type PropsType<
@@ -5,12 +6,13 @@ type PropsType<
 > = {
   title: string;
   data: T[];
+  loading: boolean;
   selectDropdown?: React.ReactNode;
 };
 
 function ListWithFilter<
   T extends { id: number; body: string; title?: string; name?: string }
->({ title, data, selectDropdown }: PropsType<T>) {
+>({ title, data, loading, selectDropdown }: PropsType<T>) {
   return (
     <div className="mt-4 relative">
       <h4 className="text-xl font-semibold">{title}</h4>
@@ -24,13 +26,15 @@ function ListWithFilter<
 
       {/* list of cards */}
       <div className="flex flex-col gap-4 mt-8">
-        {data?.map((item) => (
-          <MyCard
-            key={item.id}
-            title={item.title || item.name || ""}
-            description={item.body}
-          />
-        ))}
+        <Loading loading={loading}>
+          {data?.map((item) => (
+            <MyCard
+              key={item.id}
+              title={item.title || item.name || ""}
+              description={item.body}
+            />
+          ))}
+        </Loading>
       </div>
     </div>
   );
