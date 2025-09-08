@@ -7,7 +7,7 @@ import UserInfo from "../common/UserInfo";
 const outerTabs: TabLink[] = [
   { label: "Home", to: "/", end: true },
   { label: "Dashboard", to: "/dashboard" }, // lands on default inner tab
-  { label: "MyComponent", to: "/my-component", end: true },
+  { label: "My Component", to: "/component", end: true },
 ];
 
 function MainLayout() {

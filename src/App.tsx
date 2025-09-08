@@ -5,6 +5,7 @@ import DashboardLayout from "./components/layouts/DashboardLayout";
 import PostsPage from "./pages/PostsPage";
 import CommentsPage from "./pages/CommentsPage";
 import ProfilePage from "./pages/ProfilePage";
+import ComponentPage from "./pages/ComponentPage";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         </Route>
 
         <Route path="user" element={<ProfilePage />} />
-        <Route path="my-component" element={<div>My Component works!</div>} />
+        <Route path="component" element={<ComponentPage />} />
       </Route>
     </Routes>
   );
