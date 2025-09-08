@@ -8,7 +8,7 @@ type PropsType<
   selectDropdown?: React.ReactNode;
 };
 
-function ListWithDropDown<
+function ListWithFilter<
   T extends { id: number; body: string; title?: string; name?: string }
 >({ title, data, selectDropdown }: PropsType<T>) {
   return (
@@ -36,4 +36,4 @@ function ListWithDropDown<
   );
 }
 
-export default ListWithDropDown;
+export default ListWithFilter;

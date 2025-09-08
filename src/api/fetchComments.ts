@@ -1,6 +1,6 @@
 import type { Comment } from "../types/data.type";
 
-const fetchComments = async (postId?: number): Promise<Comment[]> => {
+const fetchComments = async (postId?: number | null): Promise<Comment[]> => {
   const url = postId
     ? `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
     : `https://jsonplaceholder.typicode.com/comments`;

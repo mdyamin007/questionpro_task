@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import ListWithDropDown from "../components/common/ListWithDropDown";
 import fetchComments from "../api/fetchComments";
 import { useMemo, useState } from "react";
 import type { Comment } from "../types/data.type";
 import fetchPosts from "../api/fetchPosts";
 import { MySelect, type Option } from "../components/ui/MySelect";
+import { queryClient } from "../main";
+import ListWithFilter from "../components/common/ListWithFilter";
 
 function CommentsPage() {
-  const [postId, setPostId] = useState<number>(1);
+  const [postId, setPostId] = useState<number | null>();
 
   const { data: comments } = useQuery({
     queryKey: ["comments", postId],
@@ -20,26 +21,36 @@ function CommentsPage() {
   });
 
   const postOptions: Option[] = useMemo(() => {
-    return (
-      posts?.map((p) => ({
+    return [
+      {
+        label: "All",
+        value: "all",
+      },
+      ...(posts?.map((p) => ({
         label: p.title,
         value: p.id.toString(),
-      })) || []
-    );
+      })) || []),
+    ];
   }, [posts]);
 
   const handlePostChange = (value: string) => {
+    if (value === "all") {
+      setPostId(null);
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
+      return;
+    }
     setPostId(Number(value));
   };
 
   return (
     <>
-      <ListWithDropDown<Comment>
+      <ListWithFilter<Comment>
         title="Comments"
         data={comments || []}
         selectDropdown={
           <MySelect
             options={postOptions}
+            defaultValue="all"
             onChange={handlePostChange}
             placeholder="Select a post"
             emptyText="No posts found"

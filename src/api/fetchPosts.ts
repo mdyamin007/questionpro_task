@@ -1,6 +1,6 @@
 import type { Post } from "../types/data.type";
 
-const fetchPosts = async (userId?: number): Promise<Post[]> => {
+const fetchPosts = async (userId?: number | null): Promise<Post[]> => {
   const url = userId
     ? `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
     : `https://jsonplaceholder.typicode.com/posts`;
